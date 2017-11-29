@@ -40,7 +40,8 @@ namespace AdminBot
                 .AddUpdateHandler<StartCommand>()
                 .Configure();
 
-            services.Configure<RateLimiterServiceOptions>(Configuration.GetSection("RateLimiter"));
+            services.Configure<SimpleRateLimiterOptions>(Configuration.GetSection("RateLimiter"));
+            services.AddSingleton<IRateLimiterFactory, SimpleRateLimiterFactory>();
             services.AddSingleton<RateLimiterService>();
         }
 

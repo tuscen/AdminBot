@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 using Telegram.Bot.Types;
 
 namespace AdminBot.Services.RateLimiting
@@ -9,12 +9,19 @@ namespace AdminBot.Services.RateLimiting
     {
         private IDictionary<int, IRateLimiter> Limiters { get; } = new ConcurrentDictionary<int, IRateLimiter>();
 
+        private readonly IRateLimiterFactory _limiterFactory;
+
+        public RateLimiterService(IRateLimiterFactory limiterFactory)
+        {
+            _limiterFactory = limiterFactory;
+        }
+
         public bool TryAcquire(Message message)
         {
             var userId = message.From.Id;
             if (!Limiters.TryGetValue(userId, out var limiter))
             {
-                limiter = new SimpleRateLimiter(2, TimeSpan.FromSeconds(10));
+                limiter = _limiterFactory.Create();
                 Limiters.TryAdd(userId, limiter);
             }
 
