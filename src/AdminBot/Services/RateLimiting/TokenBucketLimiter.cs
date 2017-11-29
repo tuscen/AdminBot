@@ -12,9 +12,9 @@ namespace AdminBot.Services.RateLimiting
 
         private long _lastUpdateTime;
 
-        public TokenBucketLimiter(int maxBudget, int fillRatePerSec)
+        public TokenBucketLimiter(long maxBudget, long fillRatePerSec)
         {
-            _fillRatePerSec  = fillRatePerSec;
+            _fillRatePerSec = fillRatePerSec;
             _maxBudget      = maxBudget;
             _currentBudget  = maxBudget;
             _lastUpdateTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
