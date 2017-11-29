@@ -41,8 +41,8 @@ namespace AdminBot
                 .Configure();
 
             services.Configure<SimpleRateLimiterOptions>(Configuration.GetSection("RateLimiter"));
-            services.AddSingleton<IRateLimiterFactory, SimpleRateLimiterFactory>();
-            services.AddSingleton<RateLimiterService>();
+            services.AddTransient<IRateLimiterFactory, SimpleRateLimiterFactory>();
+            services.AddRateLimiterService();
         }
 
         public void Configure(IApplicationBuilder app)

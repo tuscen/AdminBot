@@ -1,15 +1,10 @@
-﻿namespace AdminBot.Services.RateLimiting
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
+
+namespace AdminBot.Services.RateLimiting
 {
     public class RateLimiterServiceOptions
     {
-        /// <summary>
-        /// Maximum number of actions per time window
-        /// </summary>
-        public int MaxBudget { get; set; } = 10;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public int TimeWindow { get; set; } = 60;
+        public IDictionary<int, IRateLimiter> Limiters { get; } = new ConcurrentDictionary<int, IRateLimiter>();
     }
 }
