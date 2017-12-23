@@ -44,8 +44,7 @@ namespace AdminBot
                 .AddUpdateHandler<StartCommand>()
                 .Configure();
 
-            services.Configure<SimpleRateLimiterOptions>(Configuration.GetSection("RateLimiter"));
-            services.AddTransient<IRateLimiterFactory, SimpleRateLimiterFactory>();
+            services.AddSimpleRateLimiter(Configuration.GetSection("RateLimiter"));
             services.AddRateLimiterService();
         }
 
