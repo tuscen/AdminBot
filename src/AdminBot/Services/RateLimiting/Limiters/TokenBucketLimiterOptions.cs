@@ -1,4 +1,4 @@
-﻿namespace AdminBot.Services.RateLimiting
+﻿namespace AdminBot.Services.RateLimiting.Limiters
 {
     public class TokenBucketLimiterOptions
     {

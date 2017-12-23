@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AdminBot.Bot;
 using AdminBot.Bot.Commands;
 using AdminBot.Services.RateLimiting;
+using AdminBot.Services.RateLimiting.Limiters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,7 @@ using Telegram.Bot.Framework;
 
 namespace AdminBot
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class Startup
     {
         public Startup(IConfiguration configuration, IHostingEnvironment env)
@@ -21,8 +23,10 @@ namespace AdminBot
             Environment = env;
         }
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public IConfiguration Configuration { get; }
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public IHostingEnvironment Environment { get; }
 
         public void ConfigureServices(IServiceCollection services)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdminBot.Services.RateLimiting
+namespace AdminBot.Services.RateLimiting.Limiters
 {
     public class TokenBucketLimiter : IRateLimiter
     {

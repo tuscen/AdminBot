@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdminBot.Services.RateLimiting
+namespace AdminBot.Services.RateLimiting.Limiters
 {
     /// <summary>
     /// Simple rate limiter that doesn't allow any bursts within a time window.

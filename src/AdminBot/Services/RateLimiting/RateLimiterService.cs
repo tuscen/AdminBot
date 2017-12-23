@@ -4,6 +4,7 @@ using Telegram.Bot.Types;
 
 namespace AdminBot.Services.RateLimiting
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class RateLimiterService
     {
         private readonly IRateLimiterFactory _limiterFactory;
